@@ -1,0 +1,15 @@
+This is an app for citizens to rate their experiences with law enforcement officers. If the police are to be accountable to their communities there should be a record of how satisfied the members those communities are with each officer. I'm hoping creating a public image will motivate officers to be mindful of how they exercise their power. I'm hoping this app can strengthen the serve in "to protect and serve."
+
+Currently I am using this project as an exercise in TDD. I still haven't found a list of police officers by county. If you know where I can find one please tell me - captaingrover@gmail.com.
+
+Ruby 1.9.3
+
+To run this app locally use the following commands:
+bundle install
+rake db:migrate db:seed
+rails s
+
+To run the test suite use the commands:
+bundle exec guard init
+bundle exec guard
+
