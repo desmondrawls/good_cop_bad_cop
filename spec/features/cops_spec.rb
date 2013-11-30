@@ -1,16 +1,13 @@
 require 'spec_helper'
 
-describe "cops", type: :request do 
-  let!(:cop) { FactoryGirl.create(:cop) }
-  before do
-    visit '/'
-  end
+feature "cops", :type => :feature do 
 
-  it "finds a cop" do
-    fill_in 'zip_code', with: cop.precinct.zip_code
+  scenario "finds a cop" do
+    cop = FactoryGirl.create(:cop)
+    visit '/'
     fill_in 'badge_number', with: cop.badge_number
     click_button 'Search'
 
-    page.should have_content cop.name
+    expect(page).to have_text cop.name
   end
 end

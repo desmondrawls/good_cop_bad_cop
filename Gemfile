@@ -28,17 +28,18 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 group :test, :development do
-  gem 'rspec-rails', '2.14.0'
-  gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  # gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'faker'
+  # gem 'faker'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'capybara-webkit'
-  gem 'capybara-accessible'
+  # gem 'capybara-accessible'
   gem 'launchy'
-  gem 'sqlite3'
-  gem 'database_cleaner'
-  gem 'pry-debugger'
+  # gem 'sqlite3'
+  # gem 'database_cleaner'
+  # gem 'pry-debugger'
   gem "guard", "1.6.2"
   gem "guard-rspec", "2.5.1"
 end
