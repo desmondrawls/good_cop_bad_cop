@@ -1,4 +1,4 @@
-This is an app for citizens to rate their experiences with law enforcement officers. If the police are to be accountable to their communities there should be a record of how satisfied the members those communities are with each officer. I'm hoping creating a public image will motivate officers to be mindful of how they exercise their power. I'm hoping this app can strengthen the serve in "to protect and serve."
+This is an app for citizens to rate their experiences with law enforcement officers. If the police are to be accountable to their communities there should be a record of how satisfied the members of those communities are with each officer. I'm hoping having a public image will motivate officers to be mindful of how they exercise their power. I'm hoping this app can strengthen the serve in "to protect and serve."
 
 Currently I am using this project as an exercise in TDD. I still haven't found a list of police officers by county. If you know where I can find one please tell me - captaingrover@gmail.com.
 
