@@ -1,12 +1,15 @@
+<h2>Search for a Cop</h2>
 <%= form_tag(root_path, :method => "get") do %>
   <%= text_field_tag :badge_number, params[:badge_number], placeholder: "Badge Number" %>
-  <%= submit_tag "Search" %>
+  <p>- OR -</p>
+  <%= text_field_tag :name, params[:name], placeholder: "Name" %>
+  <p><%= submit_tag "Search" %></p>
 <% end %>
 
 <ul class="cops">
   <% if @cops %>
     <% @cops.each do |cop| %>
-    <li><%= cop.name %></li>
+    <li><%= cop.name %>, <%= cop.badge_number %></li>
     <% end %>
   <% end %>
 </ul>   
