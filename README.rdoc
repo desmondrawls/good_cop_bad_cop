@@ -4,12 +4,12 @@ Currently I am using this project as an exercise in TDD. I still haven't found a
 
 Ruby 1.9.3
 
-To run this app locally use the following commands:
-bundle install
-rake db:migrate db:seed
-rails s
+To run this app locally use the following commands:  
+bundle install  
+rake db:migrate db:seed  
+rails s  
 
-To run the test suite use the commands:
-bundle exec guard init
+To run the test suite use the commands:  
+bundle exec guard init  
 bundle exec guard
 
