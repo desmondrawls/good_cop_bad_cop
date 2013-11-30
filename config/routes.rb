@@ -4,7 +4,7 @@ GoodCop::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'cops#index'
-  resource :cops
+  resources :cops
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
