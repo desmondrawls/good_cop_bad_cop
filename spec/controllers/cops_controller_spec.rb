@@ -20,5 +20,14 @@ describe CopsController do
         assigns[:cops].should == [ cop ]
       end
     end
+
+    context "without params" do
+      it "should not build an array of cops" do
+        cop = FactoryGirl.create(:cop)
+
+        get :index
+        assigns[:cops].should == nil
+      end
+    end
   end
 end
