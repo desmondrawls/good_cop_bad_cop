@@ -4,5 +4,6 @@ class CopsController < ApplicationController
   end
 
   def show
+    @cop = Cop.find(params[:id])
   end
 end

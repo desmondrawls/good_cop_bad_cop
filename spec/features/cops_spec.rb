@@ -12,9 +12,16 @@ feature "cops", :type => :feature do
 
     expect(page).to have_text @cop.name
     expect(page).to have_text @cop.badge_number
+    expect(page).to have_text @cop.precinct_name
+    expect(page).to have_text @cop.approval_rating
 
     click_link @cop.name
     current_path.should == cop_path(@cop)
+
+    expect(page).to have_text @cop.name
+    expect(page).to have_text @cop.badge_number
+    expect(page).to have_text @cop.precinct_name
+    expect(page).to have_text @cop.approval_rating
   end
 
   scenario "finds a cop by name" do

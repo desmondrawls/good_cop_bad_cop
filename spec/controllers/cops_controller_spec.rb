@@ -28,4 +28,15 @@ describe CopsController do
       end
     end
   end
+
+  describe "#show" do
+    before do
+      @cop = FactoryGirl.create(:cop)
+    end
+
+    it "should return a cop" do
+      get :show, id: @cop.id
+      assigns[:cop].should == @cop
+    end
+  end
 end

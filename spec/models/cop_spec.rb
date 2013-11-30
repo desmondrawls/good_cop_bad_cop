@@ -28,5 +28,14 @@ describe Cop do
       cops.should == nil
     end
   end
+
+  describe "#precinct_name" do
+    let(:cop) { FactoryGirl.create(:cop) }
+
+    it "returns the name of the precinct the cop belongs to" do
+      cop.precinct.name = "Brooklyn 111"
+      cop.precinct_name.should == "Brooklyn 111"
+    end
+  end
   
 end

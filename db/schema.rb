@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129061830) do
+ActiveRecord::Schema.define(version: 20131130210600) do
 
   create_table "cops", force: true do |t|
     t.string  "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131129061830) do
 
   create_table "precincts", force: true do |t|
     t.integer "zip_code"
+    t.string  "name"
   end
 
 end

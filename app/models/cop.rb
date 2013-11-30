@@ -9,4 +9,8 @@ class Cop < ActiveRecord::Base
     end
   end
 
+  def precinct_name
+    precinct.name
+  end
+
 end
