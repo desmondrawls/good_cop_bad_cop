@@ -5,11 +5,13 @@ FactoryGirl.define do
     precinct
 
     factory :good_cop do
-      approval_rating 80
+      approves 3
+      disapproves 1
     end
 
     factory :bad_cop do
-      approval_rating 30
+      approves 1
+      disapproves 3
     end
   end
 end

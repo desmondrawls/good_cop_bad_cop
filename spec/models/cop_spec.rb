@@ -37,5 +37,31 @@ describe Cop do
       cop.precinct_name.should == "Brooklyn 111"
     end
   end
+
+  describe "#approval_rating" do
+    let(:good_cop) { FactoryGirl.create(:good_cop)}
+
+    it "returns the fraction of ratings that are approvals" do
+      good_cop.approval_rating.should == 0.75
+    end
+  end
+
+  describe "#approval" do
+    let(:cop) { FactoryGirl.create(:cop) }
+
+    it "increments a cop's approves" do
+      cop.approval
+      cop.approves.should == 1
+    end
+  end
+
+  describe "#disapproval" do
+    let(:cop) { FactoryGirl.create(:cop) }
+
+    it "increments a cop's disapproves" do
+      cop.disapproval
+      cop.disapproves.should == 1
+    end
+  end
   
 end

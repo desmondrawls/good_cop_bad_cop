@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201053304) do
+ActiveRecord::Schema.define(version: 20131201182453) do
 
   create_table "comments", force: true do |t|
     t.string  "title"
@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 20131201053304) do
     t.string  "name"
     t.integer "badge_number"
     t.integer "precinct_id"
-    t.integer "approval_rating"
+    t.integer "approves",     default: 0
+    t.integer "disapproves",  default: 0
   end
 
   create_table "precincts", force: true do |t|
