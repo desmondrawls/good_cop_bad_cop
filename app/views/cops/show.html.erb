@@ -2,3 +2,12 @@
 <p><%= @cop.badge_number %></p>
 <p><%= @cop.precinct_name %></p>
 <p><%= @cop.approval_rating %></p>
+
+<ul class="comments">
+  <% @comments.each do |comment| %>
+  <li>
+    <h3><%= comment.title %> - <%= comment.author %></h3>
+    <p><%= comment.text %></p>
+  </li>
+  <% end %>
+</ul>

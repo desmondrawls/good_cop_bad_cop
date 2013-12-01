@@ -1,5 +1,6 @@
 class Cop < ActiveRecord::Base
   belongs_to :precinct
+  has_many :comments
 
   def self.find_by_badge_or_name(badge, name)
     if badge && badge != ""

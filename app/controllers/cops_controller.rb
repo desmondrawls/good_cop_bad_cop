@@ -5,5 +5,6 @@ class CopsController < ApplicationController
 
   def show
     @cop = Cop.find(params[:id])
+    @comments = @cop.comments
   end
 end

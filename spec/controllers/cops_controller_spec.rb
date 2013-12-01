@@ -38,5 +38,10 @@ describe CopsController do
       get :show, id: @cop.id
       assigns[:cop].should == @cop
     end
+
+    it "should return an array of comments" do
+      get :show, id: @cop.id
+      assigns[:comments].should == @cop.comments
+    end
   end
 end
