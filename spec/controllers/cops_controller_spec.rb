@@ -48,25 +48,19 @@ describe CopsController do
 
   describe "#update" do
     let(:cop) { Cop.create(:name => "John McClane", :approves => 0) }
-    # before do
-    #   @cop = FactoryGirl.create(:cop, :approves => 1)
-    # end
 
     it "should increment a cop's approval rating" do
-      pending "cop.approves is incrementing but somehow the test doesn't see the change"
-      puts cop.approves
       expect{
         put :update, {id: cop.id, rating: "approval"} 
-      }.to change { cop.approves }.by(1)
-      puts cop.approves
+      }.to change { cop.reload.approves }.by(1)
       response.should redirect_to(cop)
     end
 
     it "should increment a cop's disapproval rating" do
-      pending
       expect{
         put :update, {id: cop.id, rating: "disapproval"} 
-      }.to change { cop.disapproves }.by(1)
+      }.to change { cop.reload.disapproves }.by(1)
+      response.should redirect_to(cop)
     end
   end
 end

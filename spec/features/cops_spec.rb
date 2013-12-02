@@ -36,28 +36,27 @@ feature "cops", :type => :feature do
 
   context "the cop's profile page" do
     before do
-      @good_cop.comments.build(:title => "Helpful", :text => "He gave me directions to the hospital.", :author => "Charles Manson")
+      @comment = Comment.create(:title => "Helpful", :text => "He gave me directions to the hospital.", :author => "Charles Manson")
+      @good_cop.comments << @comment
       @good_cop.save
       visit cop_path(@good_cop)
     end
 
     scenario "comments are displayed on the cop's profile page" do
-      expect(page).to have_text "Helpful"
-      expect(page).to have_text "He gave me directions to the hospital."
-      expect(page).to have_text "Charles Manson"
-      expect(page).to have_text 0.75
+      expect(page).to have_text @comment.title
+      expect(page).to have_text @comment.text
+      expect(page).to have_text @comment.author
+      expect(page).to have_text @good_cop.approval_rating
     end
 
     scenario "there are buttons to approve/disapprove" do
       click_on 'Approve'
       within '#approval_rating' do
-        expect(page).to have_text 0.8
+        expect(page).to have_text @good_cop.reload.approval_rating
       end
       click_on 'Disapprove'
-      click_on 'Disapprove'
-      click_on 'Disapprove'
       within '#approval_rating' do
-        expect(page).to have_text 0.5
+        expect(page).to have_text @good_cop.reload.approval_rating
       end
     end
   end
