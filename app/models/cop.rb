@@ -23,11 +23,11 @@ class Cop < ActiveRecord::Base
   end
 
   def approval
-    self.approves = self.approves + 1
+    self.approves += 1
   end
 
   def disapproval
-    self.disapproves = self.disapproves + 1
+    self.disapproves += 1
   end
 
 end
