@@ -59,7 +59,19 @@ feature "cops", :type => :feature do
         expect(page).to have_text @good_cop.reload.approval_rating
       end
     end
-  end
 
+    scenario "adding a comment" do
+      fill_in 'comment_title', with: "Straight Outta Compton"
+      fill_in 'comment_text', with: "Be nice to the police!"
+      fill_in 'comment_author', with: "NWA"
+      click_on 'Done'
+      within '.comments' do
+        expect(page).to have_text "Straight Outta Compton"
+        expect(page).to have_text "Be nice to the police!"
+        expect(page).to have_text "NWA"
+      end
+    end
+
+  end
 
 end

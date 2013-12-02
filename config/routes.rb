@@ -6,6 +6,8 @@ GoodCop::Application.routes.draw do
   root 'cops#index'
   resources :cops
 
+  resources :comments
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
