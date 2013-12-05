@@ -34,7 +34,7 @@ feature "cops", :type => :feature do
     expect(page).to have_text @good_cop.badge_number
   end
 
-  context "the cop's profile page" do
+  context "the cop's profile page", profile: true do
     before do
       @comment = Comment.create(:title => "Helpful", :text => "He gave me directions to the hospital.", :author => "Charles Manson")
       @good_cop.comments << @comment
@@ -63,7 +63,9 @@ feature "cops", :type => :feature do
       end
     end
 
-    scenario "adding a comment" do
+    scenario "adding a comment", :js => true do
+      pending
+      click_on 'New Comment'
       fill_in 'comment_title', with: "Straight Outta Compton"
       fill_in 'comment_text', with: "Be nice to the police!"
       fill_in 'comment_author', with: "NWA"

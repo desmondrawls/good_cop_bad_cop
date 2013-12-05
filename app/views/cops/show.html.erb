@@ -14,4 +14,4 @@
   <% end %>
 </ul>
 
-<%= render :partial => "comments/form", :locals => {:comment => @comment, :cop => @cop} %>
+<%= link_to "New Comment", new_cop_comment_path(@cop), id: "new_comment", remote: true %>

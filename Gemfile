@@ -38,7 +38,7 @@ group :test, :development do
   # gem 'capybara-accessible'
   gem 'launchy'
   # gem 'sqlite3'
-  # gem 'database_cleaner'
+  gem 'database_cleaner', '< 1.1.0'
   # gem 'pry-debugger'
   gem "guard", "1.6.2"
   gem "guard-rspec", "2.5.1"
