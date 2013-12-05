@@ -3,14 +3,17 @@ class CommentsController < ApplicationController
     @cop = Cop.find(params[:cop_id])
     @comment = Comment.new
   end
-  
+
   def create
     @cop = Cop.find(params[:cop_id])
     @comment = @cop.comments.build(comment_params)
     if @comment.save
-      redirect_to @cop
+      respond_to do |format|
+        format.html { redirect_to @cop}
+        format.js
+      end
     else
-      flash[:error] = "There was an error saving your comment"
+      flash[:error] = "We were unable to save your comment."
       redirect_to @cop
     end
   end
