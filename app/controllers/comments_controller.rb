@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+    debugger
     @cop = Cop.find(params[:cop_id])
     @comment = @cop.comments.build(comment_params)
     if @comment.save
