@@ -15,8 +15,8 @@ class Cop < ActiveRecord::Base
   end
 
   def approval_rating
-    if self.approves != 0 || self.disapproves != 0
-      self.approves.to_f / (self.approves.to_f + self.disapproves.to_f)
+    if approves != 0 || disapproves != 0
+      approves.to_f / (approves + disapproves)
     else
       "n/a"
     end

@@ -14,16 +14,4 @@
   <% end %>
 </ul>
 
-<%= form_for @comment do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :text %>
-  <%= f.text_field :text %>
-
-  <%= f.label :author %>
-  <%= f.text_field :author %>
-
-  <%= hidden_field_tag 'cop_id', @cop.id %>
-  <%= f.submit "Done"%>
-<% end %>
+<%= render :partial => "comments/form", :locals => {:comment => @comment, :cop => @cop} %>
