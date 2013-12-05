@@ -64,7 +64,6 @@ feature "cops", :type => :feature do
     end
 
     scenario "adding a comment", :js => true do
-      pending
       click_on 'New Comment'
       fill_in 'comment_title', with: "Straight Outta Compton"
       fill_in 'comment_text', with: "Be nice to the police!"

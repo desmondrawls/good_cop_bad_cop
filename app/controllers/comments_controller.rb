@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   def new
+    @cop = Cop.find(params[:cop_id])
     @comment = Comment.new
-    debugger
   end
+  
   def create
     @cop = Cop.find(params[:cop_id])
     @comment = @cop.comments.build(comment_params)
