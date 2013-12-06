@@ -1,6 +1,6 @@
 class CopsController < ApplicationController
   def index
-    @cops = Cop.find_by_badge_or_name(params[:badge_number], params[:name])
+    @cops = Cop.find_by_badge_or_name(search_params) if params[:search]
   end
 
   def show
@@ -18,6 +18,12 @@ class CopsController < ApplicationController
       flash[:error] = "Unable to save rating"
       redirect_to @cop
     end
+  end
+
+  private
+
+  def search_params
+    params[:search].reject {|k,v| v.empty? }
   end
 
 end

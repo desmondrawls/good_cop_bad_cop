@@ -8,7 +8,7 @@ feature "cops", :type => :feature do
   end
 
   scenario "finds a cop by badge number" do
-    fill_in 'badge_number', with: @good_cop.badge_number
+    fill_in 'search_badge_number', with: @good_cop.badge_number
     click_button 'Search'
 
     expect(page).to have_text @good_cop.name
@@ -27,7 +27,7 @@ feature "cops", :type => :feature do
   end
 
   scenario "finds a cop by name" do
-    fill_in 'name', with: @good_cop.name
+    fill_in 'search_name', with: @good_cop.name
     click_button 'Search'
 
     expect(page).to have_text @good_cop.name

@@ -1,8 +1,8 @@
 <h2>Search for a Cop</h2>
 <%= form_tag(root_path, :method => "get") do %>
-  <%= text_field_tag :badge_number, params[:badge_number], placeholder: "Badge Number" %>
+  <%= text_field :search, :badge_number, placeholder: "Badge Number" %>
   <p>- OR -</p>
-  <%= text_field_tag :name, params[:name], placeholder: "Name" %>
+  <%= text_field :search, :name, placeholder: "Name" %>
   <p><%= submit_tag "Search" %></p>
 <% end %>
 

@@ -2,12 +2,16 @@ class Cop < ActiveRecord::Base
   belongs_to :precinct
   has_many :comments
 
-  def self.find_by_badge_or_name(badge, name)
-    if badge && badge != ""
-      Cop.where(:badge_number => badge)
-    elsif name && name != ""
-      Cop.where("name like ?", "%#{name}%")
-    end
+  def self.find_by_badge_or_name(search_params)
+    send("search_by_" + search_params.keys[0], search_params.values[0])
+  end
+
+  def self.search_by_badge_number(badge)
+    where(:badge_number => badge)
+  end
+
+  def self.search_by_name(name)
+    where("name like ?", "%#{name}%")
   end
 
   def precinct_name

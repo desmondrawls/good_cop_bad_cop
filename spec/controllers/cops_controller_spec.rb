@@ -8,16 +8,16 @@ describe CopsController do
       @cop = FactoryGirl.create(:cop)
     end
 
-    context "with params[:badge_number]" do
+    context "with params[:search][:badge_number]" do
       it "should return an array of cops with that badge number - assuming only one" do
-        get :index, badge_number: @cop.badge_number
+        get :index, :search => {:badge_number => @cop.badge_number, :name => ""}
         assigns[:cops].should == [ @cop ]
       end
     end
 
-    context "with params[:name]" do
+    context "with params[:search][:name]" do
       it "should return an array of cops with that name" do
-        get :index, name: @cop.name
+        get :index, :search => {:badge_number => "", :name => @cop.name}
         assigns[:cops].should == [ @cop ]
       end
     end
