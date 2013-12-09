@@ -49,14 +49,14 @@ feature "cops", :type => :feature do
       expect(page).to have_text @good_cop.approval_rating
     end
 
-    scenario "rating with an approval" do
+    scenario "rating with an approval", :js => true do
       click_on 'Approve'
       within '#cop_approval_rating' do
         expect(page).to have_text 0.8
       end
     end
 
-    scenario "rating with a disapproval" do
+    scenario "rating with a disapproval", :js => true do
       click_on 'Disapprove'
       within '#cop_approval_rating' do
         expect(page).to have_text 0.6

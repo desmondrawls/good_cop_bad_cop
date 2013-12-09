@@ -13,7 +13,10 @@ class CopsController < ApplicationController
     @cop = Cop.find(params[:id])
     @cop.send(params[:rating])
     if @cop.save
-      redirect_to @cop
+      respond_to do |format|
+        format.html { redirect_to @cop }
+        format.js
+      end
     else
       flash[:error] = "Unable to save rating"
       redirect_to @cop

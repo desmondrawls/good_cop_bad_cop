@@ -51,16 +51,20 @@ describe CopsController do
 
     it "should increment a cop's approval rating" do
       expect{
-        put :update, {id: cop.id, rating: "approval"} 
+        put :update, {id: cop.id, rating: "approval", :format => 'js'} 
       }.to change { cop.reload.approves }.by(1)
-      response.should redirect_to(cop)
+      response.should be_success
+      response.status.should == 200
+      response.should render_template("update")
     end
 
     it "should increment a cop's disapproval rating" do
       expect{
-        put :update, {id: cop.id, rating: "disapproval"} 
+        put :update, {id: cop.id, rating: "disapproval", :format => 'js'} 
       }.to change { cop.reload.disapproves }.by(1)
-      response.should redirect_to(cop)
+      response.should be_success
+      response.status.should == 200
+      response.should render_template("update")
     end
   end
 end
