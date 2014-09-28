@@ -78,4 +78,11 @@ feature "cops", :type => :feature do
 
   end
 
+  scenario "Adding a New Cop", :focus => true do    
+    click_link 'New Cop'
+    current_path.should == new_cop_path
+
+    fill_in 'cop_name', with: "Popeye"
+  end
+
 end

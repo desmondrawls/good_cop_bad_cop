@@ -1,4 +1,9 @@
 class CopsController < ApplicationController
+
+  def new
+    @cop = Cop.new
+  end
+
   def index
     @cops = Cop.find_by_badge_or_name(search_params) if params[:search]
   end
