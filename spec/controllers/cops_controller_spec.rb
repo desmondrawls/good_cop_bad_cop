@@ -47,7 +47,7 @@ describe CopsController do
   end
 
   describe "#update" do
-    let(:cop) { Cop.create(:name => "John McClane", :approves => 0) }
+    let(:cop) { create(:cop, :name => "John McClane", :approves => 0) }
 
     it "should increment a cop's approval rating" do
       expect{
@@ -67,4 +67,18 @@ describe CopsController do
       response.should render_template("update")
     end
   end
+
+  describe "GET #new" do
+
+    it "assigns a new cop to @cop" do
+      get :new
+      expect(assigns(:cop)).to be_a_new(Cop)
+    end
+
+    it "renders the cops/new template" do
+      get :new
+      expect(response).to render_template :new
+    end
+  end
+
 end

@@ -12,4 +12,6 @@
     <li><%= link_to cop.name, cop %>, <%= cop.badge_number %>, <%= cop.precinct_name %>, <%= cop.approval_rating %></li>
     <% end %>
   <% end %>
-</ul>   
+</ul> 
+
+<%= link_to 'New Cop', new_cop_path %>
