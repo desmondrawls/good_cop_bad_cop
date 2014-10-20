@@ -12,6 +12,11 @@
 	<%= f.label :badge_number %>
 	<%= f.text_field :badge_number %>
 
+	<%= f.fields_for :precinct, Precinct.new do |ff| %>
+		<%= ff.label :number %>
+		<%= ff.text_field :number %>
+	<% end %>
+
 	<%= f.submit "Add" %>
 
 <% end %>

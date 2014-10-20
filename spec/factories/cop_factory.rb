@@ -14,4 +14,11 @@ FactoryGirl.define do
       disapproves 3
     end
   end
+
+
+  factory :homeless_cop, class: Cop do
+    name "Riggs"
+    badge_number 4444
+  end
+  
 end

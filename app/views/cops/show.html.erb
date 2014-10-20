@@ -4,7 +4,7 @@
 
 <h1 id="cop_name"><%= @cop.name %></h1>
 <p id="cop_badge_number"><%= @cop.badge_number %></p>
-<p id="cop_precinct_name"><%= @cop.precinct_name %></p>
+<p id="cop_precinct_number"><%= @cop.precinct_number %></p>
 <p id="cop_approval_rating"><%= @approval_rating %></p>
 <%= link_to 'Approve', cop_path(@cop, :rating => "approval"), :method => :put, remote: true %>
 <%= link_to 'Disapprove', cop_path(@cop, :rating => "disapproval"), :method => :put, remote: true %>

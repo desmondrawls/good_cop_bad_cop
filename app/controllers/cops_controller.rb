@@ -46,7 +46,7 @@ class CopsController < ApplicationController
   end
 
   def cop_params
-    params.require(:cop).permit(:name, :badge_number)
+    params.require(:cop).permit(:name, :badge_number, :precinct_attributes => [:number])
   end
 
 end
