@@ -5,6 +5,12 @@ describe Cop, focus: true do
     it { should belong_to(:precinct)}
   end
 
+  describe 'validations' do
+    it { should validate_presence_of(:badge_number)}
+    it { should validate_numericality_of(:badge_number)}
+    it { should validate_presence_of(:name)}
+  end
+
   describe "#find_by_badge_or_name" do
     let(:cop) { FactoryGirl.create(:cop) }
 

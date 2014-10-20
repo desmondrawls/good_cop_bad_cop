@@ -2,6 +2,10 @@ class Cop < ActiveRecord::Base
   belongs_to :precinct
   has_many :comments
 
+  validates :name, presence: true
+  validates :badge_number, presence: true,
+    numericality: true
+
   def self.find_by_badge_or_name(search_params)
     send("search_by_" + search_params.keys[0], search_params.values[0])
   end
@@ -15,7 +19,7 @@ class Cop < ActiveRecord::Base
   end
 
   def precinct_name
-    precinct.name
+    precinct.name if precinct
   end
 
   def approval_rating
