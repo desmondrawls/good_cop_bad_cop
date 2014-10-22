@@ -21,6 +21,10 @@
 # 	end
 # end
 
+(1..123).each do |precinct_id|
+	Precinct.create({:number => precinct_id})
+end
+
 cop1 = Cop.create({:name => "Frederick Sawyer", :badge_number => "2576"})
 cop1.update({:precinct_id => 45})
 cop2 = Cop.create({:name => "Kurt Duncan", :badge_number => "2483"})
