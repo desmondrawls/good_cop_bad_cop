@@ -42,6 +42,7 @@ group :test, :development do
   # gem 'pry-debugger'
   gem "guard", "1.6.2"
   gem "guard-rspec", "2.5.1"
+  gem "chromedriver-helper"
 end
 
 group :development do
