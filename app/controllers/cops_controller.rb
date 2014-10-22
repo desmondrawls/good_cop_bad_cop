@@ -4,6 +4,17 @@ class CopsController < ApplicationController
     @cop = Cop.new
   end
 
+  def create
+    @cop = Cop.new(cop_params)
+
+    if @cop.save
+      redirect_to @cop, notice: "Cop saved successfuly."
+    else
+      flash[:error] = "Cop was not saved."
+      render "new"
+    end
+  end
+
   def index
     @cops = Cop.find_by_badge_or_name(search_params) if params[:search]
   end
@@ -32,6 +43,10 @@ class CopsController < ApplicationController
 
   def search_params
     params[:search].reject {|k,v| v.empty? }
+  end
+
+  def cop_params
+    params.require(:cop).permit(:name, :badge_number, :precinct_attributes => [:number])
   end
 
 end

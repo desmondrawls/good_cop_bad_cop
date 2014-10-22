@@ -1,0 +1,23 @@
+<% if flash[:error] %>
+  <div class="error"><%= flash[:error] %></div>
+<% end %>
+
+<h2>Enter a New Cop</h2>
+
+<%= form_for @cop do |f| %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :badge_number %>
+	<%= f.text_field :badge_number %>
+
+	<%= f.fields_for :precinct, Precinct.new do |ff| %>
+		<%= ff.label :number %>
+		<%= ff.text_field :number %>
+	<% end %>
+
+	<%= f.submit "Add" %>
+
+<% end %>
+	

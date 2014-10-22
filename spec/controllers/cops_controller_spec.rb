@@ -68,7 +68,7 @@ describe CopsController do
     end
   end
 
-  describe "GET #new" do
+  describe "#new" do
 
     it "assigns a new cop to @cop" do
       get :new
@@ -79,6 +79,33 @@ describe CopsController do
       get :new
       expect(response).to render_template :new
     end
+  end
+
+  describe "#create" do
+    let(:valid_params) { {:cop => {name: "Popeye", badge_number: 1234}} }
+    let(:params_without_badge_number) { {:cop => {name: "Popeye"}}}
+    let(:params_without_name) { {:cop => {badge_number: 1234}}} 
+
+    context "with valid params" do
+      it "creates a new cop" do
+        expect { 
+          post :create, valid_params
+        }.to change{Cop.count}.by(1)
+        expect(response).to redirect_to(cop_path(Cop.count))
+        expect(response.status).to eq(302)
+      end
+    end
+
+    context "with invalid params" do
+      it "does not create a new cop without a badge_number" do
+        expect {
+          post :create, params_without_badge_number
+        }.to_not change{Cop.count}
+        expect(response).to render_template('new')
+        expect(response.status).to eq(200)
+      end
+    end
+
   end
 
 end

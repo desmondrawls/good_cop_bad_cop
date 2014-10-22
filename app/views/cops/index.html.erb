@@ -9,7 +9,7 @@
 <ul class="cops">
   <% if @cops %>
     <% @cops.each do |cop| %>
-    <li><%= link_to cop.name, cop %>, <%= cop.badge_number %>, <%= cop.precinct_name %>, <%= cop.approval_rating %></li>
+    <li><%= link_to cop.name, cop %>, <%= cop.badge_number %>, <%= cop.precinct_number %>, <%= cop.approval_rating %></li>
     <% end %>
   <% end %>
 </ul> 
