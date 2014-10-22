@@ -9,6 +9,40 @@
 <%= link_to 'Approve', cop_path(@cop, :rating => "approval"), :method => :put, remote: true %>
 <%= link_to 'Disapprove', cop_path(@cop, :rating => "disapproval"), :method => :put, remote: true %>
 
+<ul class="cpr-ratings">
+	<li id="courtesy">
+		<form action="">
+			Courtesy:
+			<input type="radio" name="really bad" value="1">
+			<input type="radio" name="bad" value="2">
+			<input type="radio" name="neutral" value="3">
+			<input type="radio" name="good" value="4">
+			<input type="radio" name="really good" value="5">
+		</form>
+	</li>
+	<li id="professionalism">
+		<form action="">
+			Professionalism:
+			<input type="radio" name="really bad" value="1">
+			<input type="radio" name="bad" value="2">
+			<input type="radio" name="neutral" value="3">
+			<input type="radio" name="good" value="4">
+			<input type="radio" name="really good" value="5">
+		</form>
+	</li>
+	<li id="respect">
+		<form action="">
+			Respect:
+			<input type="radio" name="really bad" value="1">
+			<input type="radio" name="bad" value="2">
+			<input type="radio" name="neutral" value="3">
+			<input type="radio" name="good" value="4">
+			<input type="radio" name="really good" value="5">
+		</form>
+	</li>
+</ul>
+
+
 <ul class="comments">
   <% @comments.each do |comment| %>
     <%= render :partial => "comments/comment", :locals => {:comment => comment} %>
