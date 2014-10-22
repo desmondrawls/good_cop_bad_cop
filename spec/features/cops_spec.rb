@@ -14,7 +14,7 @@ feature "cops", :type => :feature do
 
     expect(page).to have_text good_cop.name
     expect(page).to have_text good_cop.badge_number
-    expect(page).to have_text good_cop.precinct_name
+    expect(page).to have_text good_cop.precinct_number
     expect(page).to have_text good_cop.approval_rating
 
     click_link good_cop.name
@@ -22,7 +22,7 @@ feature "cops", :type => :feature do
 
     expect(page).to have_text good_cop.name
     expect(page).to have_text good_cop.badge_number
-    expect(page).to have_text good_cop.precinct_name
+    expect(page).to have_text good_cop.precinct_number
     expect(page).to have_text good_cop.approval_rating
     expect(page).to have_css '.comments'
   end

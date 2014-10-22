@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20141022174028) do
 
   create_table "precincts", force: true do |t|
     t.integer "zip_code"
-    t.string  "name"
+    t.integer "number"
   end
 
 end
