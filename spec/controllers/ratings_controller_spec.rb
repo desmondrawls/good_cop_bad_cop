@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'ruby-debug'
 
-describe RatingsController, :focus => true do
+describe RatingsController do
 	let(:cop) { create(:cop) }
 	let(:valid_params) {attributes_for(:rating)}
 

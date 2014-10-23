@@ -10,6 +10,18 @@ class Cop < ActiveRecord::Base
     numericality: true,
     uniqueness: true
 
+  def self.best
+    Cop.all.select{|cop| cop.approval_rating.is_a?(Numeric)}.sort{ |x,y| x.approval_rating <=> y.approval_rating}.last
+  end
+
+  def self.worst
+    Cop.all.select{|cop| cop.approval_rating.is_a?(Numeric)}.sort{ |x,y| x.approval_rating <=> y.approval_rating}.first
+  end
+
+  # def self.sort_by_approval
+  #   Cop.all.select{|cop| cop.approval_rating.is_a?(Numeric)}.sort{ |x,y| x.approval_rating <=> y.approval_rating}.first
+  # end
+
   def self.find_by_badge_or_name(search_params)
     send("search_by_" + search_params.keys[0], search_params.values[0])
   end

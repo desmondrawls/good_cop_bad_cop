@@ -20,7 +20,7 @@ feature "the cop's profile page", :type => :feature do
     expect(page).to have_text good_cop.approval_rating
   end
 
-  scenario "CPR rating appears", :focus => true do
+  scenario "CPR rating appears" do
     expect(page).to have_text "C: #{good_cop.cpr_rating[:courtesy]}"
     expect(page).to have_text "P: #{good_cop.cpr_rating[:professionalism]}"
     expect(page).to have_text "R: #{good_cop.cpr_rating[:respect]}"
@@ -40,7 +40,7 @@ feature "the cop's profile page", :type => :feature do
     end
   end
 
-  scenario "rating CPR with stars", :focus => true do
+  scenario "rating CPR with stars" do
     within(:css, 'form#new_rating') do
       within(:css, 'ul.cpr-ratings') do
         within(:css, 'li#courtesy') do

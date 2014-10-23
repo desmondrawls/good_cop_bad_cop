@@ -8,14 +8,40 @@ describe CopsController do
       @cop = FactoryGirl.create(:cop)
     end
 
+    shared_examples "best and worst" do |search_params|
+      before do
+        @good_cop = create(:good_cop)
+        @neutral_cop = create(:neutral_cop)
+        @bad_cop = create(:bad_cop)
+      end
+
+      it "assigns a best and worst cop" do
+        get :index, :search => search_params
+        expect(assigns[:best_cop]).to eq(@good_cop)
+        expect(assigns[:worst_cop]).to eq(@bad_cop)
+      end
+    end
+
     context "with params[:search][:badge_number]" do
+      before do
+        @search_params = {:badge_number => @cop.badge_number, :name => ""}
+      end
+
+      it_behaves_like "best and worst", @search_params
+
       it "should return an array of cops with that badge number - assuming only one" do
-        get :index, :search => {:badge_number => @cop.badge_number, :name => ""}
+        get :index, :search => @search_params
         assigns[:cops].should == [ @cop ]
       end
     end
 
     context "with params[:search][:name]" do
+      before do
+        @search_params = {:badge_number => @cop.badge_number, :name => ""}
+      end
+
+      it_behaves_like "best and worst", @search_params
+
       it "should return an array of cops with that name" do
         get :index, :search => {:badge_number => "", :name => @cop.name}
         assigns[:cops].should == [ @cop ]
@@ -23,6 +49,12 @@ describe CopsController do
     end
 
     context "without params" do
+      before do
+        @search_params = nil
+      end
+
+      it_behaves_like "best and worst", @search_params
+
       it "should not build an array of cops" do
         get :index
         assigns[:cops].should == nil
