@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# File.open("public/cop-data.rb", "w") do |file|
+# File.open("cop-data.rb", "w") do |file|
 # 	iterator = 1
-# 	File.open("public/cop-data.txt").readlines.each do |line|
+# 	File.open("cop-data.txt").readlines.each do |line|
 # 		name_and_badge = line.split("OFFICER ").pop.split(",")
 # 		name = name_and_badge.first.split(" ").map(&:downcase).map(&:capitalize).join(" ")
 # 		badge = name_and_badge.last.split("#").last.strip
