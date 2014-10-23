@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022174028) do
+ActiveRecord::Schema.define(version: 20141023013146) do
 
   create_table "comments", force: true do |t|
     t.string  "title"
@@ -32,5 +32,16 @@ ActiveRecord::Schema.define(version: 20141022174028) do
     t.integer "zip_code"
     t.integer "number"
   end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "cop_id"
+    t.integer  "courtesy"
+    t.integer  "professionalism"
+    t.integer  "respect"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["cop_id"], name: "index_ratings_on_cop_id"
 
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cop, focus: true do
+describe Cop do
   describe 'associations' do
     it { should belong_to(:precinct)}
   end
@@ -84,6 +84,35 @@ describe Cop, focus: true do
         expect(cop.precinct_number).to eq(111)
       end
     end
+  end
+
+  describe "#cpr_rating", :focus => true do
+    let(:cop) { create(:cop) }
+    let(:rating) { create(:rating) }
+    let(:good_rating) { create(:good_rating) }
+    let(:bad_rating) { create(:bad_rating) }
+    let(:partial_rating) { create(:partial_rating)}
+
+    before do
+      @good_rating = create(:good_rating)
+      cop.ratings << [rating, good_rating, bad_rating, partial_rating]
+    end
+
+    it "returns a hash" do
+      expect(cop.cpr_rating.class).to eq(Hash)
+    end
+
+    it "calls Rating#averages" do
+      expect(cop.ratings).to receive(:rounded_averages)
+      cop.cpr_rating
+    end
+
+    it "averages each rating" do
+      expect(cop.cpr_rating[:courtesy]).to eq((8/3.0).round(1))
+      expect(cop.cpr_rating[:professionalism]).to eq(3.0)
+      expect(cop.cpr_rating[:respect]).to eq(3.0)
+    end
+
   end
 
 end

@@ -35,7 +35,7 @@ feature "cops", :type => :feature do
     expect(page).to have_text good_cop.badge_number
   end
 
-  scenario "links to the new_cop_path", :focus => true do    
+  scenario "links to the new_cop_path" do    
     click_link 'New Cop'
     expect(current_path).to eq(new_cop_path)
   end

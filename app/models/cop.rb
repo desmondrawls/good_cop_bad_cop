@@ -1,6 +1,7 @@
 class Cop < ActiveRecord::Base
   belongs_to :precinct
   has_many :comments
+  has_many :ratings
 
   # accepts_nested_attributes_for :precinct
 
@@ -46,4 +47,7 @@ class Cop < ActiveRecord::Base
     self.precinct = precinct
   end
 
+  def cpr_rating
+    ratings.rounded_averages
+  end
 end

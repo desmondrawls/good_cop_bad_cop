@@ -23,6 +23,7 @@ class CopsController < ApplicationController
     @cop = Cop.find(params[:id])
     @approval_rating = @cop.approval_rating
     @comments = @cop.comments
+    @rating = Rating.new
   end
 
   def update
