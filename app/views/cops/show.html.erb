@@ -9,7 +9,7 @@
 <%= link_to 'Approve', cop_path(@cop, :rating => "approval"), :method => :put, remote: true %>
 <%= link_to 'Disapprove', cop_path(@cop, :rating => "disapproval"), :method => :put, remote: true %>
 
-<form action="" id="new_rating">
+<form action="<%= @cop.id %>/ratings" method="post" id="new_rating">
 	<ul class="cpr-ratings">
 		<li id="courtesy">
 				Courtesy:
@@ -36,7 +36,7 @@
 				<input type="radio" name="respect[best]" value="5">
 		</li>
 	</ul>
-	<input type="submit" value="submit">
+	<input type="submit" value="Submit">
 </form>
 
 <ul class="comments">

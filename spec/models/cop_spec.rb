@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cop, focus: true do
+describe Cop do
   describe 'associations' do
     it { should belong_to(:precinct)}
   end

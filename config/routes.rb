@@ -6,6 +6,7 @@ GoodCop::Application.routes.draw do
   root 'cops#index'
   resources :cops do
     resources :comments
+    resources :ratings, only: [:create]
   end
 
   

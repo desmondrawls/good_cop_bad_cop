@@ -34,7 +34,6 @@ feature "the cop's profile page", profile: true, :type => :feature do
 
   scenario "rating CPR with stars" do
     within(:css, 'form#new_rating') do
-      expect(page).to have_css("input[type=\"submit\"]")
       within(:css, 'ul.cpr-ratings') do
         within(:css, 'li#courtesy') do
           expect(page).to have_content("Courtesy:")
@@ -52,8 +51,9 @@ feature "the cop's profile page", profile: true, :type => :feature do
           behaves_like_stars
         end
       end
-
-      expect{ click_button "Submit" }.to change{Ratings.count}.by(1)
+      
+      expect(page).to have_css("input[type=\"submit\"]")
+      expect{ click_on 'Submit' }.to change{Rating.count}.by(1)
     end
   end
 
