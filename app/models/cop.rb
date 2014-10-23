@@ -47,4 +47,7 @@ class Cop < ActiveRecord::Base
     self.precinct = precinct
   end
 
+  def cpr_rating
+    ratings.rounded_averages
+  end
 end

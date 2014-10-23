@@ -1,0 +1,29 @@
+<%= form_for([cop, rating], url: cop_ratings_path(cop)) do |f| %>
+	<ul class="cpr-ratings">
+		<li id="courtesy">
+			Courtesy:
+			<%= f.radio_button :courtesy, 1 %>
+			<%= f.radio_button :courtesy, 2 %>
+			<%= f.radio_button :courtesy, 3 %>
+			<%= f.radio_button :courtesy, 4 %>
+			<%= f.radio_button :courtesy, 5 %>
+		</li>
+		<li id="professionalism">
+			Professionalism:
+			<%= f.radio_button :professionalism, 1 %>
+			<%= f.radio_button :professionalism, 2 %>
+			<%= f.radio_button :professionalism, 3 %>
+			<%= f.radio_button :professionalism, 4 %>
+			<%= f.radio_button :professionalism, 5 %>
+		</li>
+		<li id="respect">
+			Respect:
+			<%= f.radio_button :respect, 1 %>
+			<%= f.radio_button :respect, 2 %>
+			<%= f.radio_button :respect, 3 %>
+			<%= f.radio_button :respect, 4 %>
+			<%= f.radio_button :respect, 5 %>
+		</li>
+	</ul>
+	<%= f.submit "Submit" %>
+<% end %>
