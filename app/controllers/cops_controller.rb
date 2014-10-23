@@ -17,6 +17,8 @@ class CopsController < ApplicationController
 
   def index
     @cops = Cop.find_by_badge_or_name(search_params) if params[:search]
+    @best_cop = Cop.best
+    @worst_cop = Cop.worst
   end
 
   def show

@@ -1,3 +1,11 @@
+<div class="best">
+	Best cop: <%= @best_cop.name if @best_cop %>
+</div>
+
+<div class="worst">
+	Worst cop: <%= @worst_cop.name if @worst_cop %>
+</div>
+
 <h2>Search for a Cop</h2>
 <%= form_tag(root_path, :method => "get") do %>
   <%= text_field :search, :badge_number, placeholder: "Badge Number" %>

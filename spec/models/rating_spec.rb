@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Rating, :focus => true do
+describe Rating do
   describe "#rounded_averages" do
   	before do
   		create(:rating)

@@ -86,7 +86,7 @@ describe Cop do
     end
   end
 
-  describe "#cpr_rating", :focus => true do
+  describe "#cpr_rating" do
     let(:cop) { create(:cop) }
     let(:rating) { create(:rating) }
     let(:good_rating) { create(:good_rating) }
@@ -115,4 +115,39 @@ describe Cop do
 
   end
 
+  describe "best and worst" do
+    context "with cops in the database" do
+      before do
+        @good_cop = create(:good_cop)
+        @neutral_cop = create(:neutral_cop)
+        @bad_cop = create(:bad_cop)
+      end
+
+      describe "#best" do
+        it "returns the best cop" do
+          expect(Cop.best).to eq(@good_cop)
+        end
+      end
+
+      describe "#worst" do
+        it "returns the worst cop" do
+          expect(Cop.worst).to eq(@bad_cop)
+        end
+      end
+    end
+
+    context "without cops in the database" do
+      describe "#best" do
+        it "returns nil" do
+          expect(Cop.best).to eq(nil)
+        end
+      end
+
+      describe "#worst" do
+        it "returns nil" do
+          expect(Cop.worst).to eq(nil)
+        end
+      end
+    end
+  end
 end

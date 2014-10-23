@@ -37,8 +37,11 @@ cop5.update({:precinct_id => 12})
 cop6 = Cop.create({:name => "Charles Brown", :badge_number => "949"})
 cop7 = Cop.create({:name => "Terel Anderson", :badge_number => "03814"})
 cop7.update({:precinct_id => 23})
+
 cop8 = Cop.create({:name => "Kevin Rooney", :badge_number => "6778"})
 cop8.update({:precinct_id => 122})
+cop8.comments.create({:title => "What a Jerk", :author => "Carlton Banks", :text => "So I was driving my wife to the hospital and she was in active labor. We wanted to have a natural birth at home but when her water broke I slipped in the puddle and broke my wrist so she had to drive me to the hospital. Anyway this cop stops us and he's just laughing at me and being very VERY rude. Totally not cool. Then he gave my wife his phone number and told her that if she needs any help taking care of the baby she should call him."})
+
 cop9 = Cop.create({:name => "Jose Ortiz", :badge_number => "7879"})
 cop10 = Cop.create({:name => "Fnu Dellevalle", :badge_number => "6830"})
 cop10.update({:precinct_id => 94})
