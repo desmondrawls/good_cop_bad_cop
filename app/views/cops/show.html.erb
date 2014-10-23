@@ -9,39 +9,35 @@
 <%= link_to 'Approve', cop_path(@cop, :rating => "approval"), :method => :put, remote: true %>
 <%= link_to 'Disapprove', cop_path(@cop, :rating => "disapproval"), :method => :put, remote: true %>
 
-<ul class="cpr-ratings">
-	<li id="courtesy">
-		<form action="">
-			Courtesy:
-			<input type="radio" name="really bad" value="1">
-			<input type="radio" name="bad" value="2">
-			<input type="radio" name="neutral" value="3">
-			<input type="radio" name="good" value="4">
-			<input type="radio" name="really good" value="5">
-		</form>
-	</li>
-	<li id="professionalism">
-		<form action="">
-			Professionalism:
-			<input type="radio" name="really bad" value="1">
-			<input type="radio" name="bad" value="2">
-			<input type="radio" name="neutral" value="3">
-			<input type="radio" name="good" value="4">
-			<input type="radio" name="really good" value="5">
-		</form>
-	</li>
-	<li id="respect">
-		<form action="">
-			Respect:
-			<input type="radio" name="really bad" value="1">
-			<input type="radio" name="bad" value="2">
-			<input type="radio" name="neutral" value="3">
-			<input type="radio" name="good" value="4">
-			<input type="radio" name="really good" value="5">
-		</form>
-	</li>
-</ul>
-
+<form action="" id="new_rating">
+	<ul class="cpr-ratings">
+		<li id="courtesy">
+				Courtesy:
+				<input type="radio" name="courtesy[worst]" value="1">
+				<input type="radio" name="courtesy[bad]" value="2">
+				<input type="radio" name="courtesy[neutral]" value="3">
+				<input type="radio" name="courtesy[good]" value="4">
+				<input type="radio" name="courtesy[best]" value="5">
+		</li>
+		<li id="professionalism">
+				Professionalism:
+				<input type="radio" name="profesionalism[worst]" value="1">
+				<input type="radio" name="profesionalism[bad]" value="2">
+				<input type="radio" name="profesionalism[neutral]" value="3">
+				<input type="radio" name="profesionalism[good]" value="4">
+				<input type="radio" name="profesionalism[best]" value="5">
+		</li>
+		<li id="respect">
+				Respect:
+				<input type="radio" name="respect[worst]" value="1">
+				<input type="radio" name="respect[bad]" value="2">
+				<input type="radio" name="respect[neutral]" value="3">
+				<input type="radio" name="respect[good]" value="4">
+				<input type="radio" name="respect[best]" value="5">
+		</li>
+	</ul>
+	<input type="submit" value="submit">
+</form>
 
 <ul class="comments">
   <% @comments.each do |comment| %>

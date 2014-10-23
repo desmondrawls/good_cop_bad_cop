@@ -32,31 +32,28 @@ feature "the cop's profile page", profile: true, :type => :feature do
     end
   end
 
-  def behaves_like_stars
-    expect(page).to have_css('form input', :count => 5)
-
-    expect(page).to have_css("input[value=\"1\"]")
-    expect(page).to have_css("input[value=\"2\"]")
-    expect(page).to have_css("input[value=\"3\"]")
-    expect(page).to have_css("input[value=\"4\"]")
-    expect(page).to have_css("input[value=\"5\"]")
-  end
-
   scenario "rating CPR with stars" do
-    within(:css, 'ul.cpr-ratings li#courtesy') do
-      expect(page).to have_content("Courtesy:")
-      
-      behaves_like_stars
-    end
-    within(:css, 'ul.cpr-ratings li#professionalism') do
-      expect(page).to have_content("Professionalism:")
-      
-      behaves_like_stars
-    end
-    within(:css, 'ul.cpr-ratings li#respect') do
-      expect(page).to have_content("Respect:")
-      
-      behaves_like_stars
+    within(:css, 'form#new_rating') do
+      expect(page).to have_css("input[type=\"submit\"]")
+      within(:css, 'ul.cpr-ratings') do
+        within(:css, 'li#courtesy') do
+          expect(page).to have_content("Courtesy:")
+          
+          behaves_like_stars
+        end
+        within(:css, 'li#professionalism') do
+          expect(page).to have_content("Professionalism:")
+          
+          behaves_like_stars
+        end
+        within(:css, 'li#respect') do
+          expect(page).to have_content("Respect:")
+          
+          behaves_like_stars
+        end
+      end
+
+      expect{ click_button "Submit" }.to change{Ratings.count}.by(1)
     end
   end
 
@@ -71,6 +68,17 @@ feature "the cop's profile page", profile: true, :type => :feature do
       expect(page).to have_text "Be nice to the police!"
       expect(page).to have_text "NWA"
     end
+  end
+
+
+  def behaves_like_stars
+    expect(page).to have_css('input', :count => 5)
+
+    expect(page).to have_css("input[value=\"1\"]")
+    expect(page).to have_css("input[value=\"2\"]")
+    expect(page).to have_css("input[value=\"3\"]")
+    expect(page).to have_css("input[value=\"4\"]")
+    expect(page).to have_css("input[value=\"5\"]")
   end
 
 end
