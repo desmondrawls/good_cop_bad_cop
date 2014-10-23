@@ -9,35 +9,36 @@
 <%= link_to 'Approve', cop_path(@cop, :rating => "approval"), :method => :put, remote: true %>
 <%= link_to 'Disapprove', cop_path(@cop, :rating => "disapproval"), :method => :put, remote: true %>
 
-<form action="<%= @cop.id %>/ratings" method="post" id="new_rating">
+<%= form_for([@cop, @rating], url: cop_ratings_path(@cop)) do |f| %>
 	<ul class="cpr-ratings">
 		<li id="courtesy">
-				Courtesy:
-				<input type="radio" name="courtesy[worst]" value="1">
-				<input type="radio" name="courtesy[bad]" value="2">
-				<input type="radio" name="courtesy[neutral]" value="3">
-				<input type="radio" name="courtesy[good]" value="4">
-				<input type="radio" name="courtesy[best]" value="5">
+			Courtesy:
+			<%= f.radio_button :courtesy, 1 %>C-Worst
+			<%= f.radio_button :courtesy, 2 %>C-Bad
+			<%= f.radio_button :courtesy, 3 %>C-Neutral
+			<%= f.radio_button :courtesy, 4 %>C-Good
+			<%= f.radio_button :courtesy, 5 %>C-Best
 		</li>
 		<li id="professionalism">
-				Professionalism:
-				<input type="radio" name="profesionalism[worst]" value="1">
-				<input type="radio" name="profesionalism[bad]" value="2">
-				<input type="radio" name="profesionalism[neutral]" value="3">
-				<input type="radio" name="profesionalism[good]" value="4">
-				<input type="radio" name="profesionalism[best]" value="5">
+			Professionalism:
+			<%= f.radio_button :professionalism, 1 %>P-Worst
+			<%= f.radio_button :professionalism, 2 %>P-Bad
+			<%= f.radio_button :professionalism, 3 %>P-Neutral
+			<%= f.radio_button :professionalism, 4 %>P-Good
+			<%= f.radio_button :professionalism, 5 %>P-Best
 		</li>
 		<li id="respect">
-				Respect:
-				<input type="radio" name="respect[worst]" value="1">
-				<input type="radio" name="respect[bad]" value="2">
-				<input type="radio" name="respect[neutral]" value="3">
-				<input type="radio" name="respect[good]" value="4">
-				<input type="radio" name="respect[best]" value="5">
+			Respect:
+			<%= f.radio_button :respect, 1 %>R-Worst
+			<%= f.radio_button :respect, 2 %>R-Bad
+			<%= f.radio_button :respect, 3 %>R-Neutral
+			<%= f.radio_button :respect, 4 %>R-Good
+			<%= f.radio_button :respect, 5 %>R-Best
 		</li>
 	</ul>
-	<input type="submit" value="Submit">
-</form>
+	<%= f.submit "Submit" %>
+<% end %>
+
 
 <ul class="comments">
   <% @comments.each do |comment| %>

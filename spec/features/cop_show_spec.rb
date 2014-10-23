@@ -32,7 +32,7 @@ feature "the cop's profile page", profile: true, :type => :feature do
     end
   end
 
-  scenario "rating CPR with stars" do
+  scenario "rating CPR with stars", :focus => true do
     within(:css, 'form#new_rating') do
       within(:css, 'ul.cpr-ratings') do
         within(:css, 'li#courtesy') do
@@ -53,7 +53,12 @@ feature "the cop's profile page", profile: true, :type => :feature do
       end
       
       expect(page).to have_css("input[type=\"submit\"]")
-      expect{ click_on 'Submit' }.to change{Rating.count}.by(1)
+      expect{ 
+        choose("rating_courtesy_1")
+        choose("rating_professionalism_1")
+        choose("rating_respect_1")
+        click_on 'Submit' 
+      }.to change{Rating.count}.by(1)
     end
   end
 
