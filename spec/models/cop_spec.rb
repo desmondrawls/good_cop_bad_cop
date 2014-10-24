@@ -13,7 +13,7 @@ describe Cop do
   end
 
   describe "#find_by_badge_or_name" do
-    let(:cop) { FactoryGirl.create(:cop) }
+    let(:cop) { create(:cop) }
 
     it "returns an array of cops filtered by badge number - expecting only one match" do
       cops = Cop.find_by_badge_or_name({"badge_number" => cop.badge_number})
@@ -28,7 +28,7 @@ describe Cop do
   end
 
   describe "#precinct_number" do
-    let(:cop) { FactoryGirl.create(:cop) }
+    let(:cop) { create(:cop) }
 
     it "returns the number of the precinct the cop belongs to" do
       expect(cop.precinct_number).to eq(70)
@@ -36,7 +36,7 @@ describe Cop do
   end
 
   describe "#approval_rating" do
-    let(:good_cop) { FactoryGirl.create(:good_cop)}
+    let(:good_cop) { create(:good_cop)}
 
     it "returns the fraction of ratings that are approvals" do
       expect(good_cop.approval_rating).to eq(0.75)
@@ -44,7 +44,7 @@ describe Cop do
   end
 
   describe "#approval" do
-    let(:cop) { FactoryGirl.create(:cop) }
+    let(:cop) { create(:cop) }
 
     it "increments a cop's approves" do
       cop.approval
@@ -53,7 +53,7 @@ describe Cop do
   end
 
   describe "#disapproval" do
-    let(:cop) { FactoryGirl.create(:cop) }
+    let(:cop) { create(:cop) }
 
     it "increments a cop's disapproves" do
       cop.disapproval
@@ -61,18 +61,18 @@ describe Cop do
     end
   end
 
-  describe "#precinct_attributes=" do
-    let(:cop) { FactoryGirl.create(:homeless_cop) }
-    let(:attributes_for_existing_precinct) { {:number => attributes_for(:precinct)[:number]} }
+  describe "#precinct_attributes=", :focus => true do
+    let(:cop) { create(:homeless_cop) }
+    let!(:precinct) { create(:precinct) }
+    let(:attributes_for_existing_precinct) { {:number => precinct.number} }
     let(:attributes_for_new_precinct) { {:number => 111} }
 
     context "with an existing precinct" do
       it "associates the cop to the existing precinct" do
-        @precinct = FactoryGirl.create(:precinct)
         expect {
           cop.precinct_attributes=(attributes_for_existing_precinct)
         }.to_not change{Precinct.count}
-        expect(cop.precinct).to eq(@precinct)
+        expect(cop.precinct).to eq(precinct)
       end
     end
 
@@ -94,16 +94,18 @@ describe Cop do
     let(:partial_rating) { create(:partial_rating)}
 
     before do
-      @good_rating = create(:good_rating)
       cop.ratings << [rating, good_rating, bad_rating, partial_rating]
     end
 
     it "returns a hash" do
-      expect(cop.cpr_rating.class).to eq(Hash)
+      expect(cop.cpr_rating).to be_a(Hash)
     end
 
     it "calls Rating#averages" do
-      expect(cop.ratings).to receive(:rounded_averages)
+      #Practice with mocks & stubs even though using the real objects would be more thorough.
+      ratings = double('ratings')
+      allow(cop).to receive(:ratings).and_return(ratings)
+      expect(ratings).to receive(:rounded_averages)
       cop.cpr_rating
     end
 
@@ -117,21 +119,19 @@ describe Cop do
 
   describe "best and worst" do
     context "with cops in the database" do
-      before do
-        @good_cop = create(:good_cop)
-        @neutral_cop = create(:neutral_cop)
-        @bad_cop = create(:bad_cop)
-      end
+      let!(:good_cop) { create(:good_cop) }
+      let!(:neutral_cop) { create(:neutral_cop) }
+      let!(:bad_cop) { create(:bad_cop) }
 
       describe "#best" do
         it "returns the best cop" do
-          expect(Cop.best).to eq(@good_cop)
+          expect(Cop.best).to eq(good_cop)
         end
       end
 
       describe "#worst" do
         it "returns the worst cop" do
-          expect(Cop.worst).to eq(@bad_cop)
+          expect(Cop.worst).to eq(bad_cop)
         end
       end
     end

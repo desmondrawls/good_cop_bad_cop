@@ -2,21 +2,20 @@ require 'spec_helper'
 require 'ruby-debug'
 
 feature "the cop's profile page", :type => :feature do
-	let(:good_cop) { FactoryGirl.create(:good_cop) }
-  let(:comment) { Comment.create(:title => "Helpful", :text => "He gave me directions to the hospital.", :author => "Charles Manson") }
+	let(:good_cop) { create(:good_cop) }
+  let(:good_comment) { create(:good_comment) }
   let(:rating) { create(:rating) }
 
   before do
-    good_cop.comments << comment
+    good_cop.comments << good_comment
     good_cop.ratings << rating
-    good_cop.save
     visit cop_path(good_cop)
   end
 
   scenario "comments appear" do
-    expect(page).to have_text comment.title
-    expect(page).to have_text comment.text
-    expect(page).to have_text comment.author
+    expect(page).to have_text good_comment.title
+    expect(page).to have_text good_comment.text
+    expect(page).to have_text good_comment.author
     expect(page).to have_text good_cop.approval_rating
   end
 

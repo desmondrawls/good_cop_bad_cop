@@ -55,8 +55,7 @@ class Cop < ActiveRecord::Base
   end
 
   def precinct_attributes=(attributes)
-    precinct = Precinct.first_or_create(attributes)
-    self.precinct = precinct
+    self.precinct = Precinct.where(attributes).first_or_create
   end
 
   def cpr_rating

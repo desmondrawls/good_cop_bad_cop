@@ -2,15 +2,13 @@ require 'spec_helper'
 
 describe Rating do
   describe "#rounded_averages" do
-  	before do
-  		create(:rating)
-  		create(:good_rating)
-  		create(:bad_rating)
-  		create(:partial_rating)
-  	end
+		let!(:rating) { create(:rating) }
+		let!(:good_rating) { create(:good_rating) }
+		let!(:bad_rating) { create(:bad_rating) }
+		let!(:partial_rating) { create(:partial_rating) }
 
   	it "returns a hash" do
-  		expect(Rating.rounded_averages.class).to eq(Hash)
+  		expect(Rating.rounded_averages).to be_a(Hash)
   	end
 
   	it "calculates averages for each rating category" do
