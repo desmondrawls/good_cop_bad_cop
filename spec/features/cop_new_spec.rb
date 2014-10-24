@@ -6,19 +6,7 @@ feature "the new cop page", :type => feature do
 	let(:precinct) { create(:precinct) }
 
   before do
-    visit new_cop_path
-  end
-
-  def behaves_like_success
-  	expect { click_button 'Add' }.to change{Cop.count}.by(1)
-		
-		expect(current_path).to eq(cop_path(Cop.count))
-	end
-
-	def behaves_like_failure
-  	expect { click_button 'Add' }.to_not change{Cop.count}
-  	expect(page).to have_css('h2', text: 'Enter a New Cop')
-  	expect(page).to have_content("not saved")
+   visit new_cop_path
   end
 
   scenario "creates a new cop with valid inputs" do
@@ -48,6 +36,7 @@ feature "the new cop page", :type => feature do
 		fill_in 'cop[badge_number]', with: cop[:badge_number]
 
 		behaves_like_success
+
 		expect(page).to have_content(cop[:name])
 		expect(page).to have_content(cop[:badge_number])
 	end
@@ -80,5 +69,16 @@ feature "the new cop page", :type => feature do
   	fill_in 'cop[badge_number]', with: cop[:badge_number]
 
   	behaves_like_failure
+  end
+
+  def behaves_like_success
+    expect { click_button 'Add' }.to change{Cop.count}.by(1)    
+    expect(current_path).to eq(cop_path(Cop.count))
+  end
+
+  def behaves_like_failure
+    expect { click_button 'Add' }.to_not change{Cop.count}
+    expect(page).to have_css('h2', text: 'Enter a New Cop')
+    expect(page).to have_content("not saved")
   end
 end
