@@ -46,6 +46,8 @@ group :test, :development do
   gem "pry-debugger"
 end
 
+gem 'simplecov', :require => false, :group => :test
+
 group :development do
   gem 'debugger'
 end
