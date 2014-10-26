@@ -1,0 +1,15 @@
+<div id="cops"></div>
+
+<script type="text/json" id="bootstrap">
+	{"cops": <%= @cops.to_json %>} 
+</script>
+
+<script type="text/javascript">
+	$(function(){
+		var div = $('<div></div>');
+		div.html($('#bootstrap').text());
+		var data = JSON.parse(div.text());
+
+		CopCentral.initialize(data);
+	});
+</script>

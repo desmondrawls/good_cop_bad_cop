@@ -10,6 +10,9 @@ GoodCop::Application.routes.draw do
     resources :ratings, only: [:create]
   end
 
+  namespace :backbone do
+    resources :cops
+  end
   
 
   # Example of regular route:
