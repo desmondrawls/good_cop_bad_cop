@@ -27,6 +27,8 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'backbone-on-rails', '1.0.0'
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
@@ -44,6 +46,7 @@ group :test, :development do
   gem "guard-rspec", "2.5.1"
   gem "chromedriver-helper"
   gem "pry-debugger"
+  gem "jasmine-rails"
 end
 
 gem 'simplecov', :require => false, :group => :test
