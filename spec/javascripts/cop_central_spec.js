@@ -35,6 +35,16 @@ describe("CopCentral", function(){
 			expect(CopCentral.Routers.Cops).toHaveBeenCalled();
 		});
 
+		it("passes a Cops collection to the Cops router", function(){
+			var data = {
+				"cops": [{"name": "Rick Deckard", "badge_number":"01101"}, 
+								{"name": "Marge Gunderson", "badge_number":"9999"}]
+			};
+			CopCentral.initialize(data);
+
+			expect(CopCentral.cops_router.collection).toEqual(CopCentral.cops);
+		})
+
 		it("starts Backbone.history", function() {
 			Backbone.history.started = null;
 			Backbone.history.stop();
@@ -51,6 +61,6 @@ describe("CopCentral", function(){
 			CopCentral.initialize({});
 
 			expect(Backbone.history.start).not.toHaveBeenCalled();
-		})
+		});
 	});
 });
