@@ -5,8 +5,17 @@ CopCentral.Views.CopsIndex = Backbone.View.extend({
 	},
 
 	render: function(){
-		this.$el.html(JST['cops/index']({ cops: this.collection }));
-		console.log("COPPERS VIEW THIS:", this);
+		this.$el.html(JST['cops/index']({}));
+		this.renderCops();
 		return this;
+	},
+
+	renderCops: function(){
+		var self = this;
+		self.$('#cops-list').empty();
+		this.collection.each(function(cop){
+			var item = new CopCentral.Views.CopItem({model: cop});
+			self.$('#cops-list').append(item.render().el);
+		});
 	}
-})
+});

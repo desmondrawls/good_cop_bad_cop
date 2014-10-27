@@ -1,9 +1,2 @@
 <h1>Cop Central</h1>
-<ul>
-	<% cops.each(function(cop) { %>
-		<li>
-			<h4><%= cop.get('name') %></h4>
-			<p><%= cop.get('badge_number') %></p>
-		</li>
-	<% }) %>
-</ul>
+<ul id="cops-list"></ul>
