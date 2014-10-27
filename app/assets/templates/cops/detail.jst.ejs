@@ -1,4 +1,15 @@
 <h1>Details</h1>
 <h2 id="cop_name"><%= cop.get('name') %></h2>
 <p id="cop_badge_number">Badge Number: <%= cop.get('badge_number') %></p>
-<ul class="comments">Comments</ul>
+<p id="cop_precinct_number">Precinct: <%= cop.get('precinct_number') %></p>
+<p id="cop_approval_rating">Approval: <%= cop.get('approval_rating') %></p>
+<section class="comments">
+  <ul>
+    <% cop.comments.each(function(comment) { %>
+      <li>
+        <h4><%= comment.get('title') %> - Posted by: <%= comment.get('author') %></h4>
+        <p><%= comment.get('text') %></p>
+      </li>
+    <% }) %>
+  </ul>
+</section>

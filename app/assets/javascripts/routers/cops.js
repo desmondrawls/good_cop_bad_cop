@@ -18,7 +18,7 @@ CopCentral.Routers.Cops = Backbone.Router.extend({
 		console.log("TIME TO FETCH");
 		cop.fetch({
 			success: function(){
-				console.log("COP FETCHED SUCCESSFULLY");
+				console.log("COP COMMENTS FETCHED SUCCESSFULLY:", cop.get('comments'));
 				var view = new CopCentral.Views.CopDetail({ model: cop });
 				$('#cops').html(view.render().el);
 			},

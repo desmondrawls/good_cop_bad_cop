@@ -4,6 +4,7 @@ CopCentral.Views.CopDetail = Backbone.View.extend({
 	},
 
 	render: function(){
+		this.model.parseComments();
 		this.$el.html(JST['cops/detail']({ cop: this.model }));
 		return this;
 	}
