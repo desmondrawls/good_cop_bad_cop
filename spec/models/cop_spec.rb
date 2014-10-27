@@ -61,7 +61,7 @@ describe Cop do
     end
   end
 
-  describe "#precinct_attributes=", :focus => true do
+  describe "#precinct_attributes=" do
     let(:cop) { create(:homeless_cop) }
     let!(:precinct) { create(:precinct) }
     let(:attributes_for_existing_precinct) { {:number => precinct.number} }

@@ -43,7 +43,7 @@ feature "cops", :type => :feature do
     expect(current_path).to eq(new_cop_path)
   end
 
-  scenario "shows best and worst cops", :focus => true do
+  scenario "shows best and worst cops" do
     fill_in 'search_name', with: good_cop.name
     click_button 'Search'
 

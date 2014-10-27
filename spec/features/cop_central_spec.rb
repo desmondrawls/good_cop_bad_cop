@@ -6,10 +6,17 @@ feature "cop central" do
 		visit '/backbone/cops'
 	end
 
-	scenario "it basically works", :focus => true, :js => true do
+	scenario "displays a list of cops", :focus => true, :js => true do
 		expect(page).to have_text(good_cop.name)
 		expect(page).to have_text(good_cop.badge_number)
 		expect(page).to have_text(bad_cop.name)
 		expect(page).to have_text(bad_cop.badge_number)
+	end
+
+	scenario "it links to each cops show page", :focus => true, :js => true do
+		click_on good_cop.name
+		expect(page).to have_css('h2', text: good_cop.name)
+    expect(page).to have_text good_cop.badge_number
+    expect(page).to have_css('ul.comments')
 	end
 end
