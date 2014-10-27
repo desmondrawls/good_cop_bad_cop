@@ -1,0 +1,8 @@
+<ul>
+  <% comments.each(function(comment) { %>
+    <li>
+      <h4><%= comment.get('title') %> - Posted by: <%= comment.get('author') %></h4>
+      <p><%= comment.get('text') %></p>
+    </li>
+  <% }) %>
+</ul>

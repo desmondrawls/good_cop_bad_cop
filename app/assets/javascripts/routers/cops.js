@@ -1,5 +1,6 @@
-CopCentral.Routers.Cops = Backbone.Router.extend({
+CopCentral.Routers.Cops = Support.SwappingRouter.extend({
 	initialize: function(options) {
+		this.el = $('#cops');
 		this.collection = options.collection;
 	},
 
@@ -10,17 +11,16 @@ CopCentral.Routers.Cops = Backbone.Router.extend({
 
 	index: function() {
 		var view = new CopCentral.Views.CopsIndex({collection: this.collection});
-		$('#cops').html(view.render().$el);
+		this.swap(view);
 	},
 
 	show: function(copId) {
 		var cop = this.collection.get(copId);
-		console.log("TIME TO FETCH");
+		var self = this;
 		cop.fetch({
 			success: function(){
-				console.log("COP COMMENTS FETCHED SUCCESSFULLY:", cop.get('comments'));
 				var view = new CopCentral.Views.CopDetail({ model: cop });
-				$('#cops').html(view.render().el);
+				self.swap(view);
 			},
 			error: function(){
 				console.log("ERROR, ERROR");

@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require backbone-support
+//= require_tree ./support
 //= require cop_central
 //= require_tree ../templates
 //= require_tree ./models

@@ -1,6 +1,5 @@
-CopCentral.Views.CopsIndex = Backbone.View.extend({
+CopCentral.Views.CopsIndex = Support.CompositeView.extend({
 	initialize: function(){
-		console.log("COPSINDEX INITIALIZED WITH:", this.collection);
 		_.bindAll(this, "render");
 	},
 
@@ -14,8 +13,9 @@ CopCentral.Views.CopsIndex = Backbone.View.extend({
 		var self = this;
 		self.$('#cops-list').empty();
 		this.collection.each(function(cop){
-			var item = new CopCentral.Views.CopItem({model: cop});
-			self.$('#cops-list').append(item.render().el);
+			var itemView = new CopCentral.Views.CopItem({model: cop});
+			self.renderChild(itemView);
+			self.$('#cops-list').append(itemView.el);
 		});
 	}
 });
