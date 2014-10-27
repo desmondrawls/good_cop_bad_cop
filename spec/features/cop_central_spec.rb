@@ -7,6 +7,9 @@ feature "cop central" do
 	end
 
 	scenario "it basically works", :focus => true, :js => true do
-		expect(page).to have_text("Cop Central")
+		expect(page).to have_text(good_cop.name)
+		expect(page).to have_text(good_cop.badge_number)
+		expect(page).to have_text(bad_cop.name)
+		expect(page).to have_text(bad_cop.badge_number)
 	end
 end

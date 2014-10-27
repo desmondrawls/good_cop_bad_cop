@@ -4,7 +4,7 @@ window.CopCentral = {
   Views: {},
   Routers: {},
   initialize: function(data){
-  	console.log("INITIALIZING");
+  	console.log("INITIALIZING COP CENTRAL");
   	
   	this.cops = new CopCentral.Collections.Cops(data.cops);
 

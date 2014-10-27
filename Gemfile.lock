@@ -227,6 +227,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner (< 1.1.0)
   debugger
+  ejs
   factory_girl_rails
   guard (= 1.6.2)
   guard-rspec (= 2.5.1)

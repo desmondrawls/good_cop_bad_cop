@@ -28,6 +28,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'backbone-on-rails', '1.0.0'
+gem 'ejs'
 
 group :test, :development do
   gem 'rspec-rails'
