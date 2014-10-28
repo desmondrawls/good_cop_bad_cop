@@ -6,6 +6,7 @@ CopCentral.Routers.Cops = Support.SwappingRouter.extend({
 
 	routes: {
 		"": "index",
+		"cops/new": "new",
 		"cops/:id": "show"
 	},
 
@@ -23,8 +24,13 @@ CopCentral.Routers.Cops = Support.SwappingRouter.extend({
 				self.swap(view);
 			},
 			error: function(){
-				console.log("ERROR, ERROR");
+				console.log("ERROR FETCHING COP FOR SHOW");
 			}
 		});
+	},
+
+	new: function() {
+		var view = new CopCentral.Views.NewCop();
+		this.swap(view);
 	}
 });

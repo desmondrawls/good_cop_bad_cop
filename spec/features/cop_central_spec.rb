@@ -7,14 +7,14 @@ feature "cop central" do
 		visit '/backbone/cops'
 	end
 
-	scenario "displays a list of cops", :focus => true, :js => true do
+	scenario "displays a list of cops", :js => true do
 		expect(page).to have_text(good_cop.name)
 		expect(page).to have_text(good_cop.badge_number)
 		expect(page).to have_text(bad_cop.name)
 		expect(page).to have_text(bad_cop.badge_number)
 	end
 
-	scenario "it links to each cop's show page", :focus => true, :js => true do
+	scenario "it links to each cop's show page", :js => true do
 		click_on good_cop.name
 		expect(page).to have_css('h2', text: good_cop.name)
     expect(page).to have_text good_cop.badge_number
@@ -26,5 +26,10 @@ feature "cop central" do
     	expect(page).to have_text good_comment.author
     	expect(page).to have_text good_comment.text
     end
+	end
+
+	scenario "it links to the new cop page", :focus => true, :js => true do
+		click_on "Add a cop"
+		expect(page).to have_text "Enter a New Cop"
 	end
 end
