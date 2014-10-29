@@ -1,13 +1,14 @@
-CopCentral.Views.NewCop = Backbone.View.extend({
+CopCentral.Views.NewCop = Support.CompositeView.extend({
 	tagName: 'form',
-	id: "new-cop",
+	id: "new-cop-form",
 
 	events: {
 		"submit": "save"
 	},
 
-	initialize: function(){
-		_.bindAll(this, "render");
+	initialize: function(options){
+		console.log("OPTIONS:", options.collection);
+		_.bindAll(this, "render", "saved");
 		this.newCop();
 	},
 
@@ -39,17 +40,18 @@ CopCentral.Views.NewCop = Backbone.View.extend({
 		var auth_options = {};
     auth_options[$("meta[name='csrf-param']").attr('content')] =
                  $("meta[name='csrf-token']").attr('content');
-    /* set it as a model attribute without triggering events */
-    console.log("AUTH OPTIONS:", auth_options);
     this.model.set(auth_options, {silent: true});
     this.model.save({}, { success: this.saved, error: this.handleError });
 	},
 
-	handleError: function() {
-		console.log("ERROR ERROR ERROR");
+	// TODO: flash proper error messages. Maybe create an errors model/collection with parsing methods.
+	// Connect errors to the corresponding input field.
+	handleError: function(model, response) {
+		console.log("ERROR:", response.responseText);
 	},
 
 	saved: function(){
-		console.log("SAVED SAVED SAVED");
+		this.collection.add(this.model);
+		this.leave();
 	}
 });

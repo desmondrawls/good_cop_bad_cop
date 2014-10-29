@@ -1,8 +1,9 @@
 describe("CopCentral.Views.NewCop", function(){
-	var view, $el, e, model;
+	var view, cops, $el, e, model;
 
 	beforeEach(function(){
-		view = new CopCentral.Views.NewCop();
+		cops = new CopCentral.Collections.Cops();
+		view = new CopCentral.Views.NewCop({ collection: cops });
 		e = new Event(undefined);
 		model = view.model;
 	});
@@ -29,11 +30,22 @@ describe("CopCentral.Views.NewCop", function(){
 	it("saves the cop with the form data", function(){
 		view.render();
 		view.$('input[name=name]').val('SuperTrooper');
-		view.$('input[name=badge-number]').val('999');
-		// view.$('input[name=precinct-number]').val('19');
+		view.$('input[name=badge-number]').val('9999');
 		view.save(e);
 
 		expect(model.get('name')).toEqual('SuperTrooper');
+	});
+
+	it("adds the model to the collection", function(){
+		spyOn(cops, 'add');
+		view.saved();
+		expect(cops.add).toHaveBeenCalled();
+	});
+
+	it("leaves after saving", function(){
+		spyOn(view, 'leave');
+		view.saved();
+		expect(view.leave).toHaveBeenCalled();
 	});
 });
 

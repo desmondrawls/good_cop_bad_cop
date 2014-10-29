@@ -30,7 +30,7 @@ CopCentral.Routers.Cops = Support.SwappingRouter.extend({
 	},
 
 	new: function() {
-		var view = new CopCentral.Views.NewCop();
+		var view = new CopCentral.Views.NewCop({ collection: this.collection });
 		this.swap(view);
 	}
 });
