@@ -36,28 +36,23 @@ describe Cop do
   end
 
   describe "#approval_rating" do
-    let(:good_cop) { create(:good_cop)}
-
     it "returns the fraction of ratings that are approvals" do
-      expect(good_cop.approval_rating).to eq(0.75)
+      subject.approves, subject.disapproves = 3, 1
+      expect(subject.approval_rating).to eq(0.75)
     end
   end
 
   describe "#approval" do
-    let(:cop) { create(:cop) }
-
     it "increments a cop's approves" do
-      cop.approval
-      expect(cop.approves).to eq(1)
+      subject.approval
+      expect(subject.approves).to eq(1)
     end
   end
 
   describe "#disapproval" do
-    let(:cop) { create(:cop) }
-
     it "increments a cop's disapproves" do
-      cop.disapproval
-      expect(cop.disapproves).to eq(1)
+      subject.disapproval
+      expect(subject.disapproves).to eq(1)
     end
   end
 
