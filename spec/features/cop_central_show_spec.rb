@@ -16,7 +16,6 @@ feature "the cop's profile page", :js => true, :type => :feature do
     expect(page).to have_text good_comment.title
     expect(page).to have_text good_comment.text
     expect(page).to have_text good_comment.author
-    expect(page).to have_text good_cop.approval_rating
   end
 
   scenario "CPR rating appears" do
@@ -28,14 +27,14 @@ feature "the cop's profile page", :js => true, :type => :feature do
   scenario "rating with an approval" do
     click_on 'Approve'
     within '#cop_approval_rating' do
-      expect(page).to have_text 0.8
+      expect(page).to have_text "80%"
     end
   end
 
   scenario "rating with a disapproval" do
     click_on 'Disapprove'
     within '#cop_approval_rating' do
-      expect(page).to have_text 0.6
+      expect(page).to have_text "60%"
     end
   end
 

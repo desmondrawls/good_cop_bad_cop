@@ -15,10 +15,16 @@ module Backbone
 			respond_with(Cop.create(cop_params))
 		end
 
+		def update
+		  cop = Cop.find(params[:id])
+		  cop.update_attributes(cop_params)
+		  respond_with(cop)
+		end
+
 		private
 
 		def cop_params
-			params.require(:cop).permit(:name, :badge_number, :precinct_attributes => [:number])
+			params.require(:cop).permit(:name, :badge_number, :approves, :disapproves, :precinct_attributes => [:number])
 		end
 	end
 end
