@@ -3,6 +3,11 @@
 <p id="cop_badge_number">Badge Number: <%= cop.get('badge_number') %></p>
 <p id="cop_precinct_number">Precinct: <%= cop.get('precinct_number') %></p>
 <p id="cop_approval_rating">Approval: <%= cop.get('approval_rating') %></p>
+<section class="cpr">
+	<p id="cop_courtesy_rating">C: <%= cpr_rating["courtesy"].toFixed(1) %></p>
+	<p id="cop_professionalism_rating">P: <%= cpr_rating["professionalism"].toFixed(1) %></p>
+	<p id="cop_respect_rating">R: <%= cpr_rating["respect"].toFixed(1) %></p>
+</section>
 <section class="comments">
 <h3>Comments:</h3>
 	<div id="comments-list"></div>

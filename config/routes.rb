@@ -11,7 +11,9 @@ GoodCop::Application.routes.draw do
   end
 
   namespace :backbone do
-    resources :cops, only: [:index, :show, :create]
+    resources :cops, only: [:index, :show, :create] do
+      resources :comments, only: [:index, :create]
+    end
   end
   
 

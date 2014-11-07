@@ -29,8 +29,6 @@ group :test, :development do
   # gem 'faker'
 end
 
-gem 'simplecov', :require => false, :group => :test
-
 group :development do
   gem 'debugger'
 end

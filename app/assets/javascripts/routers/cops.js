@@ -20,6 +20,7 @@ CopCentral.Routers.Cops = Support.SwappingRouter.extend({
 		var self = this;
 		cop.fetch({
 			success: function(){
+				console.log("Cop:", cop);
 				var view = new CopCentral.Views.CopDetail({ model: cop });
 				self.swap(view);
 			},

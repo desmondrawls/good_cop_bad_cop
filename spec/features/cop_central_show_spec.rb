@@ -13,7 +13,6 @@ feature "the cop's profile page", :js => true, :type => :feature do
   end
 
   scenario "comments appear" do
-  	save_and_open_page
     expect(page).to have_text good_comment.title
     expect(page).to have_text good_comment.text
     expect(page).to have_text good_comment.author
@@ -26,14 +25,14 @@ feature "the cop's profile page", :js => true, :type => :feature do
     expect(page).to have_text "R: #{good_cop.cpr_rating[:respect]}"
   end
 
-  scenario "rating with an approval", :js => true do
+  scenario "rating with an approval" do
     click_on 'Approve'
     within '#cop_approval_rating' do
       expect(page).to have_text 0.8
     end
   end
 
-  scenario "rating with a disapproval", :js => true do
+  scenario "rating with a disapproval" do
     click_on 'Disapprove'
     within '#cop_approval_rating' do
       expect(page).to have_text 0.6
@@ -81,16 +80,16 @@ feature "the cop's profile page", :js => true, :type => :feature do
     end
   end
 
-  scenario "adding a comment", :js => true do
+  scenario "adding a comment" do
     click_on 'New Comment'
-    fill_in 'comment_title', with: "Straight Outta Compton"
-    fill_in 'comment_text', with: "Be nice to the police!"
-    fill_in 'comment_author', with: "NWA"
-    click_on 'Done'
+    fill_in 'comment-title', with: "Smelly"
+    fill_in 'comment-text', with: "Seriously needs to shower more often."
+    fill_in 'comment-author', with: "Billy Bob"
+    click_on 'Submit'
     within '.comments' do
-      expect(page).to have_text "Straight Outta Compton"
-      expect(page).to have_text "Be nice to the police!"
-      expect(page).to have_text "NWA"
+      expect(page).to have_text "Smelly"
+      expect(page).to have_text "Seriously needs to shower more often"
+      expect(page).to have_text "Billy Bob"
     end
   end
 

@@ -5,7 +5,7 @@ CopCentral.Views.CopDetail = Support.CompositeView.extend({
 
 	render: function(){
 		this.model.parseComments();
-		this.$el.html(JST['cops/detail']({ cop: this.model }));
+		this.$el.html(JST['cops/detail']({ cop: this.model, cpr_rating: this.model.get("cpr_rating") }));
 		this.renderComments();
 		return this;
 	},
