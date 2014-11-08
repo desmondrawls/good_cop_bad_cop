@@ -13,6 +13,7 @@ CopCentral.Routers.Cops = Support.SwappingRouter.extend({
 	index: function() {
 		var view = new CopCentral.Views.CopsIndex({collection: this.collection});
 		this.swap(view);
+		console.log($("#cops-list"));
 	},
 
 	show: function(copId) {

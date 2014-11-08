@@ -26,6 +26,7 @@ CopCentral.Views.CopDetail = Support.CompositeView.extend({
 
 	addApprove: function(e){
 		e.preventDefault();
+		console.log("ADDING APPROVE");
 		var self = this;
     this.model.save({approves: this.model.get("approves") + 1}, {success: this.saved, error: this.handleError});
 	},
@@ -36,10 +37,11 @@ CopCentral.Views.CopDetail = Support.CompositeView.extend({
 	},
 
 	saved: function(model, response, options) {
-		console.log("GOT BACK:", response);
+		console.log("GOT BACK:", this.model);
 		var self = this;
 		this.model.fetch({
 			success: function(){
+				console.log("COP SAVED");
 				self.render();
 			},
 			error: function(){

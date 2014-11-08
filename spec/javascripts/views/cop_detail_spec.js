@@ -3,7 +3,8 @@ describe("CopCentral.Views.CopDetail", function(){
 	beforeEach(function(){
 		comments = [{"title": "No Sympathy", "author": "Penguin", "text": "He doesn't even try to understand where you're coming from."},
 										{"title": "Awesome Gear", "author": "Regular Cop", "text": "I wish I was as cool as Robocop."}]
-		cop = new CopCentral.Models.Cop({"name": "Robocop", 
+		cop = new CopCentral.Models.Cop({"id": 3,
+																		"name": "Robocop", 
 																		"badge_number": "010101", 
 																		"precinct_number": 99,
 																		"approves": 4,
@@ -48,6 +49,31 @@ describe("CopCentral.Views.CopDetail", function(){
 		spyOn(cop, "save");
 		view.addApprove(e);
 		expect(cop.save).toHaveBeenCalledWith({approves: 5}, {success: view.saved, error: view.handleError});
+	});
+
+	it("calls the saved callback on success", function(){
+		var e = new Event(undefined);
+		var server = sinon.fakeServer.create();
+		server.respondWith("PUT", "/backbone/cops/3", [ 204, null, "" ]);
+		spyOn(view, "saved");
+		view.addApprove(e);
+ 		server.respond();
+ 		expect(view.saved).toHaveBeenCalled();
+	});
+
+	it("calls fetch on the model from the saved function", function(){
+		spyOn(cop, "fetch");
+		view.saved();
+		expect(cop.fetch).toHaveBeenCalled();
+	});
+
+	it("calls render on the view when fetch within saved is successful", function(){
+		var server = sinon.fakeServer.create();
+		server.respondWith([200, {"Content-Type":"text/html","Content-Length":2}, '{"OK":"True"}']);
+		spyOn(view, "render");
+		view.saved();
+		server.respond();
+		expect(view.render).toHaveBeenCalled();
 	});
 
 	xit("calls for a new CommentsIndex view", function(){

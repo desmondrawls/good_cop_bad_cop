@@ -19,7 +19,6 @@ feature "cop central" do
 		click_on good_cop.name
 		expect(page).to have_css('h2', text: good_cop.name)
     expect(page).to have_text good_cop.badge_number
-    expect(page).to have_text good_cop.approval_rating
     expect(page).to have_text good_cop.precinct_number
     expect(page).to have_css('section.comments')
     within(:css, 'section.comments') do
