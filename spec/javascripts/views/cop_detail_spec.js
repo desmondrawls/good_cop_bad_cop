@@ -37,6 +37,26 @@ describe("CopCentral.Views.CopDetail", function(){
 		expect($el).toHaveText(/R: 3.2/);
 	});
 
+	it("renders a CPR rating form", function(){
+		expect($($el)).toContainHtml('<input type="radio" name="cop-courtesy" value="1">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-courtesy" value="2">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-courtesy" value="3">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-courtesy" value="4">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-courtesy" value="5">');
+
+		expect($($el)).toContainHtml('<input type="radio" name="cop-professionalism" value="1">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-professionalism" value="2">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-professionalism" value="3">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-professionalism" value="4">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-professionalism" value="5">');
+
+		expect($($el)).toContainHtml('<input type="radio" name="cop-respect" value="1">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-respect" value="2">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-respect" value="3">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-respect" value="4">');
+		expect($($el)).toContainHtml('<input type="radio" name="cop-respect" value="5">');	
+	});
+
 	it("has buttons for approve and disapprove", function(){
 		expect($el).toContainElement('a#cop_approve');
 		expect($el).toHaveText(/Approve/);
@@ -77,7 +97,7 @@ describe("CopCentral.Views.CopDetail", function(){
 	});
 
 	xit("calls for a new CommentsIndex view", function(){
-		spyOn(CopCentral.Views, 'CommentsIndex');
+		spyOn(CopCentral.Views, "CommentsIndex");
 		view.render();
 		expect(CopCentral.Views.CommentsIndex).toHaveBeenCalled();
 	});
