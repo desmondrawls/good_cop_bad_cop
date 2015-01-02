@@ -9,6 +9,15 @@ CopCentral.Models.Cop = Backbone.Model.extend({
 	},
 
 	formattedApproval: function() {
-		return this.get("approval_rating").toFixed(2).toString().split(".")[1] + "%";
+		var approval_rating = this.get("approval_rating");
+		if (_.isString(approval_rating)) {
+			return approval_rating;
+		}
+		else if (_.isNumber(approval_rating)) {
+			return approval_rating.toFixed(2).toString().split(".")[1] + "%";
+		}
+		else {
+			console.log("UNKNOWN APPROVAL RATING FORMAT:", approval_rating);
+		}
 	}
 });

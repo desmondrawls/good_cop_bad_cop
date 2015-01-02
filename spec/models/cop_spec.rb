@@ -40,6 +40,20 @@ describe Cop do
       subject.approves, subject.disapproves = 3, 1
       expect(subject.approval_rating).to eq(0.75)
     end
+
+    it "returns 'n/a' when a cop has not yet been rated" do
+      expect(subject.approval_rating).to eq("n/a")
+    end
+
+    it "returns 1 when there are only approvals" do
+      subject.approves = 2
+      expect(subject.approval_rating).to eq(1.00)
+    end
+
+    it "returns 0 when there are only disapprovals" do
+      subject.disapproves = 3
+      expect(subject.approval_rating).to eq(0.00)
+    end
   end
 
   describe "#approval" do
