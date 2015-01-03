@@ -57,6 +57,13 @@ describe("CopCentral.Views.CopDetail", function(){
 		expect($($el)).toContainHtml('<input type="radio" name="cop-respect" value="5">');	
 	});
 
+	it("updates the model's cpr rating when the cpr form is submitted", function(){
+		var e = new Event(undefined);
+		spyOn(cop, "save");
+		view.addCPR(e);
+		expect(cop.save).toHaveBeenCalledWith({approves: 5}, {success: view.saved, error: view.handleError});
+	});
+
 	it("has buttons for approve and disapprove", function(){
 		expect($el).toContainElement('a#cop_approve');
 		expect($el).toHaveText(/Approve/);

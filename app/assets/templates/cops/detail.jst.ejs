@@ -7,11 +7,34 @@
 <a id="cop_disapprove" href="#">Disapprove</a>
 
 
-<section class="cpr">
+<section id="ratings" class="cpr">
 	<p id="cop_courtesy_rating">C: <%= cpr_rating["courtesy"].toFixed(1) %></p>
 	<p id="cop_professionalism_rating">P: <%= cpr_rating["professionalism"].toFixed(1) %></p>
 	<p id="cop_respect_rating">R: <%= cpr_rating["respect"].toFixed(1) %></p>
+	<h3>Grade this Cop</h3>
+	
+	<label for="cop-courtesy">Courtesy:</label>
 	<input type="radio" name="cop-courtesy" value="1">
+	<input type="radio" name="cop-courtesy" value="2">
+	<input type="radio" name="cop-courtesy" value="3">
+	<input type="radio" name="cop-courtesy" value="4">
+	<input type="radio" name="cop-courtesy" value="5">
+	<br>
+	<label for="cop-professionalism">Professionalism:</label>
+	<input type="radio" name="cop-professionalism" value="1">
+	<input type="radio" name="cop-professionalism" value="2">
+	<input type="radio" name="cop-professionalism" value="3">
+	<input type="radio" name="cop-professionalism" value="4">
+	<input type="radio" name="cop-professionalism" value="5">
+	<br>
+	<label for="cop-respect">Respect:</label>
+	<input type="radio" name="cop-respect" value="1">
+	<input type="radio" name="cop-respect" value="2">
+	<input type="radio" name="cop-respect" value="3">
+	<input type="radio" name="cop-respect" value="4">
+	<input type="radio" name="cop-respect" value="5">
+	<br>
+	<input type="submit" id="cpr_submit" value="Submit" />	
 </section>
 <section class="comments">
 <h3>Comments:</h3>
